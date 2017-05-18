@@ -54,7 +54,7 @@ python dnsamplification.py -target 192.168.1.2 -servers servers.txt -timeout 100
 ```
 python dnsamplscan.py -192.168.0.0/24 -query . -querytype A -timeout 5 -aratio 10 -output servers.txt
 ```
-### формат файла серверов
+### Формат файла серверов
 Список DNS серверов, передаваемый в файле имеет следующий формат:
 ```
 <адрес сервера> <DNS запрос> <Тип DNS запроса> <коэффициент усиления>
