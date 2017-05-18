@@ -18,6 +18,10 @@
 
 ## Начало работы
 ### dnsamplcheck.py
+Синтаксис:
+```
+python dnsamplcheck.py [параметры]
+```
 Параметры:
 ```
 -input - входной файл со списком DNS серверов для проверки (требуется);  
@@ -29,6 +33,10 @@
 python dnsamplcheck.py -input servers.txt -output good-servers.txt
 ```
 ### dnsamplification.py
+Синтаксис:
+```
+python dnsamplcheck.py [параметры]
+```
 Параметры:
 ```
 -target - IP адрес тестируемого сервера (требуется);
@@ -41,6 +49,10 @@ python dnsamplcheck.py -input servers.txt -output good-servers.txt
 python dnsamplification.py -target 192.168.1.2 -servers servers.txt -timeout 100 -threads 20
 ```
 ### dnsamplscan.py
+Синтаксис:
+```
+python dnsamplcheck.py [параметры]
+```
 Параметры:
 ```
 -ip - диапазон IP адресов для поиска DNS серверов;
