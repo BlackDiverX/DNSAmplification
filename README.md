@@ -1,10 +1,10 @@
 # DNSAmplification
-Набор утилит для DNS Amplification stresstesting
+Набор утилит для стресс тестирования DNS Amplification
 ## Системные требования
 * Python 2.x.;
 * Scapy;
 * Linux;
-* для утилиты dnsamplification.py - внешний IP адрес без фильтраци и NAT.
+* для утилиты dnsamplification.py - внешний IP адрес без фильтрации и NAT.
 ## Структура проекта
 
 | Файл/директория | Описание |
