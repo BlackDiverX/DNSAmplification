@@ -42,16 +42,18 @@ if __name__ == '__main__':
 	parser.add_argument("-timeout", type=int, default=10, help="Timeout querys. 0-Infinity (Default: 10sec)")
 	parser.add_argument("-threads", type=int, default=10, help="Query threads (Default: 10)")
 	args =  parser.parse_args()
+	DNSFile = args.servers
+	target = args.target
+	timeout = args.timeout
+	threads = args.threads
 
-	if len(sys.argv) < 2:
+	if (len(sys.argv) < 2) or (target == None):
+		print "Parameters missing"
 		parser.print_help()
 		sys.exit(0)
 
 	try:
-		DNSFile = args.servers
-		target = args.target
-		timeout = args.timeout
-		threads = args.threads
+
 		main(readservers(DNSFile))
 	except KeyboardInterrupt:
 		print "Stoping stress testing and Exit"
