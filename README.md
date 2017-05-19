@@ -1,5 +1,7 @@
 # DNSAmplification
-Набор утилит для стресс тестирования DNS Amplification
+Набор утилит для стресс тестирования DNS Amplification.  
+Подробное использование описано в статье [Стресс тестирование с использованием DNS Amplification](https://blackdiver.net/it/linux/4490)
+
 ## Системные требования
 * Python 2.x.;
 * Scapy;
