@@ -22,8 +22,8 @@ def dnsscan():
 	f.close()
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
-	parser.add_argument("-ip", help="IP for scan (Example: 192.168.1.1 or 192.168.1.0/24")
-	parser.add_argument("-query", default=".", help="DNS query (Default: .")
+	parser.add_argument("-ip", help="IP for scan (Example: 192.168.1.1 or 192.168.1.0/24)")
+	parser.add_argument("-query", default=".", help="DNS query (Default: .)")
 	parser.add_argument("-querytype", default="A", help="DNS query type (Default: A")
 	parser.add_argument("-timeout", type=int, default=10, help="Timeout to wait answers. 0-Infinity (Default: 10sec)")
 	parser.add_argument("-aratio", type=int, default=0, help="Amplification ratio (Default: 0)")
