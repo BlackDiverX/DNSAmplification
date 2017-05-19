@@ -17,9 +17,11 @@ def main(slist):
 	i = 0
 	f = open(Output, 'w')
 	for element in slist:
+		SPort = random.randint(1025, 65534)
+		print SPort
 		param = slist[i].split()
-		p=IP(dst=param[0])/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname=param[1],qtype=param[2]))
-		send(p,inter=0,verbose=0,count=100)
+		p=IP(dst=param[0])/UDP(sport=SPort,dport=53)/DNS(rd=1,qd=DNSQR(qname=param[1],qtype=param[2]))
+#		r = sr(p,inter=0,timeout=5,verbose=0,count=100)
 		resp=sr(p,timeout=Timeout,verbose=0)
 		for a in resp[0]:
 			if a[1].haslayer(DNS):

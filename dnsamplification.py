@@ -17,10 +17,11 @@ def readservers(DataFile):
 
 def dnsquery(dns):
 	param = dns.split()
-	ip=IP(src=target,dst=param[0])/UDP(dport=53)
+	SPort = random.randint(1025, 65534)
+	ip=IP(src=target,dst=param[0])/UDP(sport=SPort,dport=53)
 	dnsrequest=DNS(rd=1,qd=DNSQR(qname=param[1],qtype=param[2]))
 	p=ip/dnsrequest
-	print "Start Thread (IP: ",param[0]," Query Type: ",param[2]," Query: ",param[1],")"
+	print "Start Thread (IP:",param[0],"Port:",SPort,"Query Type:",param[2]," Query:",param[1],")"
 	send(p,inter=0,loop=1,verbose=0)
 
 def main(dnsservers):

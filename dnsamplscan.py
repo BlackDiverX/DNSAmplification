@@ -9,7 +9,8 @@ from scapy.all import *
 import argparse
 
 def dnsscan():
-	p=IP(dst=Ip)/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname=Query,qtype=Querytype))
+	SPort = random.randint(1025, 65534)
+	p=IP(dst=Ip)/UDP(sport=SPort,dport=53)/DNS(rd=1,qd=DNSQR(qname=Query,qtype=Querytype))
 	resp=sr(p,timeout=Timeout)
 	f = open(Output, 'w')
 	for a in resp[0]:
